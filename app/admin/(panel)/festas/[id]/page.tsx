@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import prisma from '@/lib/prisma';
 import { ConviteForm } from '@/components/convite-form';
@@ -24,7 +24,7 @@ export default async function FestaDetailPage({ params }: { params: { id: string
     );
   }
 
-  const totalConfirmados = festa.confirmados.reduce((sum, item) => sum + 1 + item.acompanhantes, 0);
+  const totalConfirmados = festa.confirmados.reduce((sum: number, item: typeof festa.confirmados[number]) => sum + 1 + item.acompanhantes, 0);
   const conviteLink = buildInviteUrl(festa.convite.token);
 
   return (
@@ -115,6 +115,3 @@ function Highlight({ label, value }: { label: string; value: React.ReactNode }) 
     </div>
   );
 }
-
-
-
