@@ -85,7 +85,7 @@ export default async function FestaDetailPage({ params }: { params: { id: string
               <p className="p-6 text-sm text-slate-500">Nenhuma confirmacao recebida ainda.</p>
             ) : (
               <ul className="divide-y divide-slate-200">
-                {festa.confirmados.map((confirmado) => (
+                {festa.confirmados.map((confirmado: typeof festa.confirmados[number]) => (
                   <li key={confirmado.id} className="p-4 text-sm text-slate-700">
                     <p className="font-semibold text-slate-900">{confirmado.nome}</p>
                     <p className="text-xs text-slate-500">
