@@ -1,4 +1,5 @@
 ﻿import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import prisma from '@/lib/prisma';
 import { ConviteForm } from '@/components/convite-form';
 import { InviteQrCode } from '@/components/qr-code';
@@ -29,7 +30,8 @@ export default async function FestaDetailPage({ params }: { params: { id: string
   return (
     <div className="space-y-10">
       <Link href="/admin/festas" className="inline-flex items-center text-sm font-medium text-slate-500 transition hover:text-slate-800">
-        <- Voltar para festas
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Voltar para festas
       </Link>
 
       <section className="grid gap-8 rounded-2xl bg-white p-8 shadow-sm shadow-slate-200/60 lg:grid-cols-[2fr,1fr]">
@@ -113,3 +115,6 @@ function Highlight({ label, value }: { label: string; value: React.ReactNode }) 
     </div>
   );
 }
+
+
+
