@@ -1,4 +1,4 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import prisma from '@/lib/prisma';
 import { formatDate } from '@/lib/utils';
 
@@ -11,8 +11,8 @@ export default async function FestasListPage() {
     }
   });
 
-  const totalConfirmacoes = festas.reduce((acc, festa) => {
-    const presentes = festa.confirmados.reduce((sum, item) => sum + 1 + item.acompanhantes, 0);
+  const totalConfirmacoes = festas.reduce((acc: number, festa) => {
+    const presentes = festa.confirmados.reduce((sum: number, item) => sum + 1 + item.acompanhantes, 0);
     return acc + presentes;
   }, 0);
 
@@ -21,7 +21,7 @@ export default async function FestasListPage() {
       <section className="grid gap-6 md:grid-cols-3">
         <StatCard title="Festas cadastradas" value={festas.length} accent="text-bigjump.blue" />
         <StatCard title="Total confirmações" value={totalConfirmacoes} accent="text-bigjump.red" />
-        <StatCard title="Capacidade total" value={festas.reduce((sum, festa) => sum + (festa.capacidade ?? 0), 0)} accent="text-bigjump.yellow" />
+        <StatCard title="Capacidade total" value={festas.reduce((sum: number, festa) => sum + (festa.capacidade ?? 0), 0)} accent="text-bigjump.yellow" />
       </section>
 
       <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
@@ -38,7 +38,7 @@ export default async function FestasListPage() {
           </thead>
           <tbody className="divide-y divide-slate-200 text-sm text-slate-700">
             {festas.map((festa) => {
-              const confirmados = festa.confirmados.reduce((sum, item) => sum + 1 + item.acompanhantes, 0);
+              const confirmados = festa.confirmados.reduce((sum: number, item) => sum + 1 + item.acompanhantes, 0);
               return (
                 <tr key={festa.id} className="hover:bg-slate-50/60">
                   <td className="px-6 py-4">
