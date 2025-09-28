@@ -23,7 +23,7 @@ export default async function RsvpPage({ params }: { params: { token: string } }
       <div className="mx-auto flex max-w-3xl flex-col gap-10">
         <div className="rounded-3xl bg-white/10 p-8 shadow-xl backdrop-blur">
           <Link href={`/convite/${params.token}`} className="text-xs font-semibold uppercase tracking-[0.4em] text-white/70">
-            <- Voltar ao convite
+            &larr; Voltar ao convite
           </Link>
           <h1 className="mt-4 text-3xl font-bold">Confirmar presenca</h1>
           <p className="mt-2 text-sm text-white/70">
