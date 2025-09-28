@@ -1,0 +1,49 @@
+﻿// Prisma schema for Big Jump invitation system
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Festa {
+  id            Int           @id @default(autoincrement())
+  nome          String
+  idade         Int?
+  data          DateTime
+  horaInicio    String?
+  horaFim       String?
+  sala          String
+  fotoUrl       String?
+  capacidade    Int?
+  convite       Convite?
+  confirmados   Confirmado[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Convite {
+  id          Int      @id @default(autoincrement())
+  festaId     Int      @unique
+  token       String   @unique
+  link        String
+  qrCodeUrl   String?
+  Festa       Festa    @relation(fields: [festaId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Confirmado {
+  id            Int      @id @default(autoincrement())
+  festaId       Int
+  nome          String
+  acompanhantes Int      @default(0)
+  mensagem      String?
+  Festa         Festa    @relation(fields: [festaId], references: [id], onDelete: Cascade)
+  createdAt     DateTime @default(now())
+
+  @@index([festaId])
+}

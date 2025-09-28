@@ -1,0 +1,8 @@
+﻿node_modules
+.next
+.env
+*.log
+pnpm-lock.yaml
+yarn.lock
+prisma/dev.db
+package-lock.json
